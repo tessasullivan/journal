@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { validateAll } from "indicative";
 
 class Register extends Component {
   constructor() {
@@ -16,24 +15,6 @@ class Register extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log(this.state);
-
-    // validating user data
-    const data = this.state;
-    const rules = {
-      name: 'required|string',
-      email: 'required|email',
-      password: 'required|string|min:6'
-    };
-    validateAll(data, rules)
-      .then(() => {})
-      .catch(errors => {
-        console.log(errors)
-      });
   };
 
   render() {
@@ -106,7 +87,6 @@ class Register extends Component {
             </p>
           </div>
         </div>
-        div&gt;
       </div>
     );
   }
