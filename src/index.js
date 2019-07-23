@@ -6,6 +6,9 @@ import NavBar from './components/NavBar/NavBar';
 import Welcome from './components/Welcome/Welcome';
 import Footer from './components/Footer/Footer';
 import CreateArticle from './components/CreateArticle/CreateArticle';
+import Login from './components/Login/Login';
+import SingleArticle from './components/SingleArticle/SingleArticle';
+import Register from './components/Register/Register';
 
 const Home = () => {
   return <h1>Home page</h1>;
@@ -22,7 +25,10 @@ ReactDOM.render(
       <Route exact path="/" component={Welcome} />
       <Route path="/about" component={About} />
       <Route path="/home" component={Home} />
+      <Route path="/article/:id" component={SingleArticle} />
       <Route path="/articles/create" component={CreateArticle} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       <Footer />
     </div>
   </BrowserRouter>,

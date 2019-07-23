@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Article = () => {
   return (
@@ -23,9 +24,9 @@ const Article = () => {
           labore tritani inciderint. Sea at mutat quando, dicant nullam et vim.
         </p>
         <p className="text-center mt-40">
-          <a className="btn btn-primary btn-round" href="blog-single.html">
+          <Link className="btn btn-primary btn-round" to="article/some-title-slug">
             Read more
-          </a>
+          </Link>
         </p>
       </div>
     </article>
