@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import NavBar from './components/NavBar/NavBar';
 import Welcome from './components/Welcome/Welcome';
+import Footer from './components/Footer/Footer';
+import CreateArticle from './components/CreateArticle/CreateArticle';
 
 const Home = () => {
   return <h1>Home page</h1>;
@@ -20,6 +22,8 @@ ReactDOM.render(
       <Route exact path="/" component={Welcome} />
       <Route path="/about" component={About} />
       <Route path="/home" component={Home} />
+      <Route path="/articles/create" component={CreateArticle} />
+      <Footer />
     </div>
   </BrowserRouter>,
   document.getElementById("root")

@@ -7,32 +7,33 @@ const NavBar = () => {
       <div className="container">
         <div className="topbar-left">
           <button className="topbar-toggler">☰</button>
-          <a className="topbar-brand" href="index.html">
+          <Link className="topbar-brand" to="/">
             <img
               className="logo-default"
-              src="assets/img/logo.png"
+              src={`${process.env.PUBLIC_URL}/assets/img/home-logo.png`}
               alt="logo"
             />
-            {/* <img
+            <img
               className="logo-inverse"
-              src="assets/img/logo-light.png"
+              src={`${process.env.PUBLIC_URL}/assets/img/home-logo-light.png`}
               alt="logo"
-            /> */}
-          </a>
+            />
+          </Link>
         </div>
         <div className="topbar-right">
           <ul className="topbar-nav nav">
             <li className="nav-item">
-              <a className="nav-link" href="index.html">
+              <Link className="nav-link" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="create-article.html">
+              <Link className="nav-link" to="/articles/create">
                 Write new article
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
+            {/* eslint-disable-next-line  */}
               <a className="nav-link" href="#">
                 Hey Garry!
                 <i className="fa fa-caret-down" />
