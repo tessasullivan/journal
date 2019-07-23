@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { validateAll } from "indicative";
+import Axios from "axios";
+import config from "../../config";
 
 class Register extends Component {
   constructor() {
@@ -28,14 +30,29 @@ class Register extends Component {
       email: "required|email",
       password: "required|string|min:6|confirmed"
     };
+
     const messages = {
-      required: 'The {{ field }} is required.',
-      'email.email': 'The email is invalid.',
-      'password.confirmed': 'The password confirmation does not match.'
+      required: "The {{ field }} is required.",
+      "email.email": "The email is invalid.",
+      "password.confirmed": "The password confirmation does not match."
     };
+
+    // First, validate name, email, and password rules, then post to the API.  If successful, go to /, otherwise, display errors
     validateAll(data, rules, messages)
       .then(() => {
-        console.log("SUCCESS");
+        Axios.post(`${config.apiUrl}/auth/register`, {
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password 
+        })
+          .then(response => {
+            this.props.history.push("/");
+          })
+          .catch(errors => {
+            const formattedErrors = {};
+            formattedErrors["email"] = errors.response.data["email"][0];
+            this.setState({ errors: formattedErrors });
+          });
       })
       .catch(errors => {
         const formattedErrors = {};
