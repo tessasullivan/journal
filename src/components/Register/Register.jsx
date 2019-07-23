@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { validateAll } from 'indicative';
+import { validateAll } from "indicative";
 
 class Register extends Component {
   constructor() {
@@ -8,7 +8,8 @@ class Register extends Component {
       name: "",
       email: "",
       password: "",
-      passwordConfirm: ""
+      passwordConfirm: "",
+      errors: {}
     };
   }
 
@@ -18,26 +19,32 @@ class Register extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     // validating user data
     const data = this.state;
     const rules = {
-      name: 'required|string',
-      email: 'required|email',
-      password: 'required|string|min:6'
+      name: "required|string",
+      email: "required|email",
+      password: "required|string|min:6|confirmed"
     };
-
-    validateAll(data, rules)
+    const messages = {
+      required: 'The {{ field }} is required.',
+      'email.email': 'The email is invalid.',
+      'password.confirmed': 'The password confirmation does not match.'
+    };
+    validateAll(data, rules, messages)
       .then(() => {
-        // register the user
+        console.log("SUCCESS");
       })
       .catch(errors => {
-        console.log(errors);
-        // show the errors to the user
-      })
-  }
-
+        const formattedErrors = {};
+        errors.forEach(error => (formattedErrors[error.field] = error.message));
+        this.setState({
+          errors: formattedErrors
+        });
+      });
+  };
 
   render() {
     return (
@@ -66,6 +73,12 @@ class Register extends Component {
                   className="form-control"
                   placeholder="Username"
                 />
+
+                {this.state.errors["name"] && (
+                  <small className="text-danger">
+                    {this.state.errors["name"]}
+                  </small>
+                )}
               </div>
               <div className="form-group">
                 <input
@@ -75,6 +88,11 @@ class Register extends Component {
                   className="form-control"
                   placeholder="Email address"
                 />
+                {this.state.errors["email"] && (
+                  <small className="text-danger">
+                    {this.state.errors["email"]}
+                  </small>
+                )}
               </div>
               <div className="form-group">
                 <input
@@ -93,6 +111,11 @@ class Register extends Component {
                   className="form-control"
                   placeholder="Password (confirm)"
                 />
+                {this.state.errors["password"] && (
+                  <small className="text-danger">
+                    {this.state.errors["password"]}
+                  </small>
+                )}
               </div>
               <br />
               <button
