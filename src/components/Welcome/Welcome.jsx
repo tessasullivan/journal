@@ -15,9 +15,11 @@ const Welcome = () => {
           <div className="col-lg-6 offset-lg-3">
             <Article />
             <nav className="flexbox mb-50 mt-50">
+              {/* eslint-disable-next-line */}
               <a className="btn btn-white disabled">
                 <i className="ti-arrow-left fs-9 mr-4" /> Newer
               </a>
+              {/* eslint-disable-next-line */}
               <a className="btn btn-white" href="#">
                 Older
                 <i className="ti-arrow-right fs-9 ml-4" />
