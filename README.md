@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Snippety - A Journal for tracking medications, exercises, or any frequently repeated activities
+#### by **Tessa Sullivan**
 
-## Available Scripts
+## Description
+This application will allow users to keep a journal wherein snippets of frequently repeated information can be easily added to a journal entry.   
 
-In the project directory, you can run:
+### Specs
+![Component diagram](/src/assets/img/CapstoneComponents.png)
+![UI Mockup](/src/assets/img/CapstoneUI.png)
 
-### `npm start`
+| User story | Details|
+| :-------------     | :------------- |
+| User can create a snippet | Anything saved as a snippet shows up in the upper left section of the screen as a link with an arrow |
+| User can add snippet to journal entry | Clicking the arrow next to the snippet adds it to the journal entry|
+| User can write and save journal entries | The 3 most recent entries are listed as links in the lower left section of the screen as links |
+| User can delete snippets | Snippets are removed from the upper left section but any snippets included in journal entries remain|
+| User can delete journal entries | Entries are removed from the database | 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+#### Future enhancements
+| User story | Details |
+| :-------------     | :------------- |
+| Ability to create charts of snippet data | User can choose one entry on a snippet, for example, sit-ups and generate a chart mapping the data over time |
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup/Installation Requirements
 
-### `npm run build`
+**To Be Done**
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Known issues
+No known issues at this time
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Technologies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* React JavaScript
+* Webpack / Babel / eslint
 
-### `npm run eject`
+## Support and contact details
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+_Contact Tessa Sullivan @ tessa.sullivan@gmail.com_
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### License
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+*{This software is licensed under the MIT license}*
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Copyright (c) 2019 **_Tessa Sullivan_**
