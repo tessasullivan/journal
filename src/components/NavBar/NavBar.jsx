@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({authUser }) => {
   return (
     <nav className="topbar topbar-inverse topbar-expand-md topbar-sticky">
       <div className="container">
@@ -35,7 +35,7 @@ const NavBar = () => {
             <li className="nav-item">
             {/* eslint-disable-next-line  */}
               <a className="nav-link" href="#">
-                Hey Garry!
+                Hey {authUser && authUser.user.name}!
                 <i className="fa fa-caret-down" />
               </a>
               <div className="nav-submenu">
