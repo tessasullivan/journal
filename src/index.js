@@ -11,31 +11,43 @@ import SingleArticle from "./components/SingleArticle/SingleArticle";
 import Register from "./components/Register/Register";
 
 class App extends Component {
-
   constructor() {
     super();
 
     this.state = {
       authUser: null
+      // authUser: {
+      //   user: {
+      //     name: 'test'
+      //   }
+      // }
     };
   }
   componentDidMount() {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem("user");
     if (user) {
-      this.setState({authUser: JSON.parse(user)});
+      this.setState({ authUser: JSON.parse(user) });
     }
   }
+
+  setAuthUser = authUser => {
+    this.setState({ authUser });
+  };
+
   render() {
     const { location } = this.props;
     return (
       <div>
-        
-        {location.pathname !== "/login" && location.pathname !== "/register" && (
-          <NavBar authUser={this.state.authUser}/>
-        )}
+        {location.pathname !== "/login" &&
+          location.pathname !== "/register" && (
+            <NavBar authUser={this.state.authUser} />
+          )}
         <Route exact path="/" component={Welcome} />
         <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <Route
+          path="/register"
+          render={props => <Register {...props} setAuthUser={this.setAuthUser} />}
+        />
         <Route path="/article/:slug" component={SingleArticle} />
         <Route path="/articles/create" component={CreateArticle} />
         {location.pathname !== "/login" &&
@@ -45,7 +57,7 @@ class App extends Component {
   }
 }
 
-const Main = withRouter(( props ) => {
+const Main = withRouter(props => {
   return <App {...props} />;
 });
 

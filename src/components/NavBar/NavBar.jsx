@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = ({authUser }) => {
+const NavBar = ({ authUser }) => {
   return (
     <nav className="topbar topbar-inverse topbar-expand-md topbar-sticky">
       <div className="container">
@@ -32,31 +32,39 @@ const NavBar = ({authUser }) => {
                 Write new article
               </Link>
             </li>
-            <li className="nav-item">
-            {/* eslint-disable-next-line  */}
-              <a className="nav-link" href="#">
-                Hey {authUser && authUser.user.name}!
-                <i className="fa fa-caret-down" />
-              </a>
-              <div className="nav-submenu">
-                <a className="nav-link" href="page-login.html">
-                  My articles
+            {/* If user is authenticated, show the my articles & logout options */}
+            {authUser && (
+              <li className="nav-item">
+                {/* eslint-disable-next-line  */}
+                <a className="nav-link" href="#">
+                  Hey {authUser && authUser.user.name}!
+                  <i className="fa fa-caret-down" />
                 </a>
-                {/* <a className="nav-link" href>
+                <div className="nav-submenu">
+                  <a className="nav-link" href="page-login.html">
+                    My articles
+                  </a>
+                  {/* <a className="nav-link" href>
                   Logout
                 </a> */}
-              </div>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/register">
-                Register
-              </Link>
-            </li>
+                </div>
+              </li>
+            )}
+            {/* If a user is authenticated, hide the login and register options */}
+            {!authUser && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
+            {!authUser && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/register">
+                  Register
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

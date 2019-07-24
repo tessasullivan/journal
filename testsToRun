@@ -1,0 +1,10 @@
+Starting with 65. Making api requests to server, API server was down so none of the following could be tested so these need to be run once the server is up.
+
+Verify that user can register
+Verify that user registering with an email already registered gets error message.
+Verify that authenticated user is set in state
+Verify that NavBar is rendered correctly after registering a new user
+
+These worked when dummy name was hard-coded
+Verify that NavBar has correct name after user is authenticated
+Verify Login and Register are not available from NavBar for authenticated user.

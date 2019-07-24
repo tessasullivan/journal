@@ -42,13 +42,14 @@ class Register extends Component {
     validateAll(data, rules, messages)
       .then(() => {
 
-        // register the user
+        // register the user 
         Axios.post(`${config.apiUrl}/auth/register`, {
           name: this.state.name,
           email: this.state.email,
           password: this.state.password
         }).then(response => {
           localStorage.setItem('user', JSON.stringify(response.data.data));
+          this.props.setAuthUser(response.data.data);
           this.props.history.push('/');
           console.log(response);
         }).catch(errors => {
