@@ -6,38 +6,47 @@ class Register extends Component {
     super();
 
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      passwordConfirm: ''
+      name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      errors: {}
     };
   }
 
-  handleInputChange = (event) => {
+  handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
-  handleSubmit = (event) => {
-    event.preventDefault()
+  handleSubmit = event => {
+    event.preventDefault();
     // validating user data
     const data = this.state;
     const rules = {
-      name: 'required|string',
-      email: 'required|email',
-      password: 'required|string|min:6'
+      name: "required|string",
+      email: "required|email",
+      password: "required|string|min:6|confirmed"
     };
 
-    validateAll(data, rules)
+    const messages = {
+      required: 'The {{ field }} is required.',
+      'password.confirmed': 'The password confirmation does not match.',
+      'email.email': 'The email address is invalid.'
+    };
+    validateAll(data, rules, messages)
       .then(() => {
+        // console.log ("SUCCESS");
         // register the user
       })
       .catch(errors => {
-        console.log(errors);
         // show the errors to the user
-      })
-  }
+        const formattedErrors = {};
+        errors.forEach(error => (formattedErrors[error.field] = error.message));
+        this.setState({ errors: formattedErrors });
+      });
+  };
   render() {
     return (
       <div>
@@ -59,30 +68,50 @@ class Register extends Component {
             <form className="form-type-material" onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input
+                  name="name"
+                  onChange={this.handleInputChange}
                   type="text"
                   className="form-control"
                   placeholder="Username"
                 />
+                {this.state.errors["name"] && (
+                  <small className="text-danger">
+                    {this.state.errors["name"]}
+                  </small>
+                )}
               </div>
               <div className="form-group">
                 <input
-                  onChange={this.handleInputChange} 
+                  name="email"
+                  onChange={this.handleInputChange}
                   type="text"
                   className="form-control"
                   placeholder="Email address"
                 />
+                {this.state.errors["email"] && (
+                  <small className="text-danger">
+                    {this.state.errors["email"]}
+                  </small>
+                )}
               </div>
               <div className="form-group">
                 <input
-                  onChange={this.handleInputChange} 
+                  name="password"
+                  onChange={this.handleInputChange}
                   type="password"
                   className="form-control"
                   placeholder="Password"
                 />
+                {this.state.errors["password"] && (
+                  <small className="text-danger">
+                    {this.state.errors["password"]}
+                  </small>
+                )}
               </div>
               <div className="form-group">
                 <input
-                  onChange={this.handleInputChange} 
+                  name="password_confirmation"
+                  onChange={this.handleInputChange}
                   type="password"
                   className="form-control"
                   placeholder="Password (confirm)"
