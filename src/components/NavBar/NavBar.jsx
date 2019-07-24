@@ -42,9 +42,9 @@ const NavBar = () => {
                 <a className="nav-link" href="page-login.html">
                   My articles
                 </a>
-                <a className="nav-link" href>
+                {/* <a className="nav-link" href>
                   Logout
-                </a>
+                </a> */}
               </div>
             </li>
             <li className="nav-item">
