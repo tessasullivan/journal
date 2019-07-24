@@ -24,6 +24,7 @@ const SingleArticle = () => {
               <br />
               <p>
                 <span className="opacity-70 mr-8">By</span>
+                {/* eslint-disable-next-line */}
                 <a className="text-white" href="#">
                   Hossein Shams
                 </a>
@@ -37,6 +38,7 @@ const SingleArticle = () => {
               </p>
             </div>
             <div className="col-12 align-self-end text-center">
+              {/* eslint-disable-next-line */}
               <a
                 className="scroll-down-1 scroll-down-inverse"
                 href="#"
@@ -157,15 +159,19 @@ const SingleArticle = () => {
                   thinking. Dramatically redefine out-of-the-box schemas.
                 </p>
                 <div className="gap-multiline-items-1 mt-30">
+                  {/* eslint-disable-next-line */}
                   <a className="badge badge-pill badge-default" href="#">
                     Record
                   </a>
+                  {/* eslint-disable-next-line */}
                   <a className="badge badge-pill badge-default" href="#">
                     Progress
                   </a>
+                  {/* eslint-disable-next-line */}
                   <a className="badge badge-pill badge-default" href="#">
                     Customers
                   </a>
+                  {/* eslint-disable-next-line */}
                   <a className="badge badge-pill badge-default" href="#">
                     News
                   </a>

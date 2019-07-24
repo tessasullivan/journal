@@ -6,8 +6,11 @@ This application will allow users to keep a journal wherein snippets of frequent
 
 ### Specs
 ![Component diagram](/src/assets/img/CapstoneComponents.png)
+
 ![UI Mockup](/src/assets/img/CapstoneUI.png)
 
+
+### User Stories
 | User story | Details|
 | :-------------     | :------------- |
 | User can create a snippet | Anything saved as a snippet shows up in the upper left section of the screen as a link with an arrow |
