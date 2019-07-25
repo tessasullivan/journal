@@ -1,5 +1,5 @@
 import React from "react";
-import Article from "../Article/Article";
+import JournalEntry from "../JournalEntry/JournalEntry";
 import Banner from "../Banner/Banner";
 
 const Welcome = () => {
@@ -13,7 +13,7 @@ const Welcome = () => {
       <main className="main-content bg-gray">
         <div className="row">
           <div className="col-lg-6 offset-lg-3">
-            <Article />
+            <JournalEntry />
             <nav className="flexbox mb-50 mt-50">
               {/* eslint-disable-next-line */}
               <a className="btn btn-white disabled">
