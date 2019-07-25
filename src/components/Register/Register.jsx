@@ -29,9 +29,7 @@ class Register extends Component {
       const user = await this.props.registerUser(this.state);
 
       // Store the registered user locally
-      localStorage.setItem("user", JSON.stringify(user));
       this.props.setAuthUser(user);
-      this.props.history.push("/");
 
       // If there are errors with registering the user, catch and display them.
     } catch (errors) {
@@ -52,8 +50,5 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   setAuthUser: PropTypes.func.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
 }
 export default Register;

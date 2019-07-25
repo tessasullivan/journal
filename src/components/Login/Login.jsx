@@ -25,9 +25,7 @@ class Login extends Component {
     try {
       const user = await this.props.loginUser(this.state);
 
-      localStorage.setItem("user", JSON.stringify(user));
       this.props.setAuthUser(user);
-      this.props.history.push("/");
 
     } catch (errors) {
       this.setState({errors})
@@ -49,8 +47,5 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   setAuthUser: PropTypes.func.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
 }
 export default Login;

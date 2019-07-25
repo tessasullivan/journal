@@ -1,4 +1,5 @@
 import { validateAll } from "indicative";
+import {PropTypes } from 'prop-types';
 import Axios from "axios";
 import config from "../config";
 
@@ -34,7 +35,7 @@ export default class AuthService {
       const formattedErrors = {};
       
       // If there are errors with registering the user, catch and display them.
-      if (errors.response.status === 422) {
+      if (errors.response && errors.response.status === 422) {
         formattedErrors["email"] = errors.response.data["email"][0];
         return Promise.reject(formattedErrors);
       }
@@ -72,7 +73,7 @@ export default class AuthService {
       const formattedErrors = {};
       
       // If there are errors with logging in, catch and display them.
-      if (errors.response.status === 401) {
+      if (errors.response && errors.response.status === 401) {
         formattedErrors["email"] = 'Invalid credentials';
         return Promise.reject(formattedErrors);
       }
@@ -82,4 +83,11 @@ export default class AuthService {
       return Promise.reject(formattedErrors);
     }
   }
+}
+AuthService.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  setAuthUser: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired
 }
