@@ -25,10 +25,10 @@ class App extends Component {
   }
 
   setAuthUser = authUser => {
-    this.setState({ authUser, 
-      }, () => {  localStorage.setItem("user", JSON.stringify(authUser));
+    this.setState({ authUser }, () => {
+      localStorage.setItem("user", JSON.stringify(authUser));
       this.props.history.push("/");
-     });
+    });
   };
 
   removeAuthUser = () => {
@@ -69,7 +69,18 @@ class App extends Component {
           )}
         />
         <Route path="/entry/:slug" component={SingleJournalEntry} />
-        <Route path="/entries/create" component={CreateJournalEntry} />
+        <Route
+          path="/entries/create"
+          render={props => (
+            <CreateJournalEntry
+              {...props}
+              getJournalCategories={
+                this.props.entriesService.getJournalCategories
+              }
+            />
+          )}
+        />
+
         {location.pathname !== "/login" &&
           location.pathname !== "/register" && <Footer />}
       </div>
@@ -84,7 +95,8 @@ App.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func
   }).isRequired,
-  authService: PropTypes.objectOf(PropTypes.func).isRequired
+  authService: PropTypes.objectOf(PropTypes.func).isRequired,
+  entriesService: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
 export default App;

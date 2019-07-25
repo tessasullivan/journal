@@ -4,11 +4,17 @@ import { BrowserRouter, withRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
 import AuthService from "./services/auth";
+import EntriesService from "./services/entries";
 import App from "./components/App/App";
 
-
 const Main = withRouter(props => {
-  return <App authService={new AuthService()} {...props} />;
+  return (
+    <App
+      authService={new AuthService()}
+      entriesService={new EntriesService()}
+      {...props}
+    />
+  );
 });
 
 ReactDOM.render(
