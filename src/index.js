@@ -9,6 +9,7 @@ import CreateArticle from "./components/CreateArticle/CreateArticle";
 import Login from "./components/Login/Login";
 import SingleArticle from "./components/SingleArticle/SingleArticle";
 import Register from "./components/Register/Register";
+import AuthService from "./services/auth";
 
 class App extends Component {
   constructor() {
@@ -47,7 +48,7 @@ class App extends Component {
         <Route path="/login" component={Login} />
         <Route
           path="/register"
-          render={props => <Register {...props} setAuthUser={this.setAuthUser} />}
+          render={props => <Register {...props} registerUser={this.props.authService.registerUser} setAuthUser={this.setAuthUser} />}
         />
         <Route path="/article/:slug" component={SingleArticle} />
         <Route path="/articles/create" component={CreateArticle} />
@@ -59,7 +60,7 @@ class App extends Component {
 }
 
 const Main = withRouter(props => {
-  return <App {...props} />;
+  return <App authService={new AuthService()} {...props} />;
 });
 
 ReactDOM.render(
