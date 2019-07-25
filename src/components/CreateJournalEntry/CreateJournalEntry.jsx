@@ -30,16 +30,23 @@ class CreateJournalEntry extends Component {
     });
   };
 
+  handleSubmit = async event => {
+    event.preventDefault();
+    await this.props.createJournalEntry(this.state);
+  }
+
   render() {
     return (
       <CreateJournalEntryForm
         handleInputChange={this.handleInputChange}
         categories={this.state.categories}
+        handleSubmit={this.handleSubmit}
       />
     );
   }
 }
 CreateJournalEntry.propTypes = {
   getJournalCategories: PropTypes.func.isRequired,
+  createJournalEntry: PropTypes.func.isRequired
 };
 export default CreateJournalEntry;

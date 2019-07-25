@@ -1,9 +1,8 @@
 import React from "react";
 import Banner from "../../Banner/Banner";
 import { PropTypes } from "prop-types";
-import { createCoverageSummary } from "istanbul-lib-coverage";
 
-const CreateJournalEntryForm = ({ handleInputChange, categories }) => {
+const CreateJournalEntryForm = ({ handleInputChange, handleSubmit, categories }) => {
   return (
     <div>
       <Banner
@@ -20,8 +19,7 @@ const CreateJournalEntryForm = ({ handleInputChange, categories }) => {
               <div className="col-12 col-lg-12">
                 <form
                   className="p-30 bg-gray rounded"
-                  method="POST"
-                  data-form="mailer"
+                  onSubmit={handleSubmit}
                 >
                   <div className="row">
                     <div className="form-group col-md-12 my-5">
@@ -82,6 +80,7 @@ const CreateJournalEntryForm = ({ handleInputChange, categories }) => {
 };
 CreateJournalEntryForm.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   categories: PropTypes.array
   // errors: PropTypes.objectOf(PropTypes.string).isRequired
 };

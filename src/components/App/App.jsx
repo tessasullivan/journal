@@ -77,6 +77,7 @@ class App extends Component {
               getJournalCategories={
                 this.props.entriesService.getJournalCategories
               }
+              createJournalEntry={this.props.entriesService.createJournalEntry}
             />
           )}
         />
