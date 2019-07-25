@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Article = () => {
+const JournalEntry = () => {
   return (
     <article className="mt-90">
       <header className="text-center mb-40">
@@ -24,7 +24,7 @@ const Article = () => {
           labore tritani inciderint. Sea at mutat quando, dicant nullam et vim.
         </p>
         <p className="text-center mt-40">
-          <Link className="btn btn-primary btn-round" to="article/some-title-slug">
+          <Link className="btn btn-primary btn-round" to="entry/some-title-slug">
             Read more
           </Link>
         </p>
@@ -33,4 +33,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default JournalEntry;

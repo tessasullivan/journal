@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import NavBar from "../NavBar/NavBar";
 import Welcome from "../Welcome/Welcome";
 import Footer from "../Footer/Footer";
-import CreateArticle from "../CreateArticle/CreateArticle";
+import CreateJournalEntry from "../CreateJournalEntry/CreateJournalEntry";
 import Login from "../Login/Login";
-import SingleArticle from "../SingleArticle/SingleArticle";
+import SingleJournalEntry from "../SingleJournalEntry/SingleJournalEntry";
 import Register from "../Register/Register";
 
 class App extends Component {
@@ -68,8 +68,8 @@ class App extends Component {
             />
           )}
         />
-        <Route path="/article/:slug" component={SingleArticle} />
-        <Route path="/articles/create" component={CreateArticle} />
+        <Route path="/entry/:slug" component={SingleJournalEntry} />
+        <Route path="/entries/create" component={CreateJournalEntry} />
         {location.pathname !== "/login" &&
           location.pathname !== "/register" && <Footer />}
       </div>

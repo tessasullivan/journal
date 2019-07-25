@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../Banner/Banner";
 
-const CreateArticle = () => {
+const CreateJournalEntry = () => {
   return (
     <div>
       <Banner
@@ -52,7 +52,7 @@ const CreateArticle = () => {
                   </div>
                   <div className="text-center">
                     <button className="btn btn-lg btn-primary" type="submit">
-                      Create Article
+                      Create Journal Entry
                     </button>
                   </div>
                 </form>
@@ -65,4 +65,4 @@ const CreateArticle = () => {
   );
 };
 
-export default CreateArticle;
+export default CreateJournalEntry;
