@@ -22,7 +22,7 @@ class Register extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
     // validating user data
@@ -39,33 +39,35 @@ class Register extends Component {
       'email.email': 'The email address is invalid.'
     };
 
-    validateAll(data, rules, messages)
-      .then(() => {
-
-        // register the user 
-        Axios.post(`${config.apiUrl}/auth/register`, {
+    try {
+      await validateAll(data, rules, messages);
+      try {
+        // Attempt to register the user 
+        const response = await Axios.post(`${config.apiUrl}/auth/register`, {
           name: this.state.name,
           email: this.state.email,
-          password: this.state.password
-        }).then(response => {
-          localStorage.setItem('user', JSON.stringify(response.data.data));
-          this.props.setAuthUser(response.data.data);
-          this.props.history.push('/');
-          console.log(response);
-        }).catch(errors => {
-          console.log(errors.response);
-          const formattedErrors = {};
-          if(errors.response) formattedErrors['email'] = errors.response.data['email'][0];
-          this.setState({ errors: formattedErrors });
-        })
+          password: this.state.password })
 
-      })
-      // If user validation fails, show the user on the form
-      .catch(errors => {
+        // Store the registered user locally
+        localStorage.setItem('user', JSON.stringify(response.data.data));
+        this.props.setAuthUser(response.data.data);
+        this.props.history.push('/');
+        console.log(response);
+      
+      // If there are errors with registering the user, catch and display them.
+      } catch (errors) {
         const formattedErrors = {};
         errors.forEach(error => (formattedErrors[error.field] = error.message));
         this.setState({ errors: formattedErrors });
-      });
+      }
+    // If there are errors with the validation, catch and display them.
+    } catch (errors) {
+
+      console.log(errors.response);
+      const formattedErrors = {};
+      if(errors.response) formattedErrors['email'] = errors.response.data['email'][0];
+      this.setState({ errors: formattedErrors });
+    }
   };
   render() {
     return (

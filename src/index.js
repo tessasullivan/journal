@@ -16,11 +16,6 @@ class App extends Component {
 
     this.state = {
       authUser: null
-      // authUser: {
-      //   user: {
-      //     name: 'test'
-      //   }
-      // }
     };
   }
   componentDidMount() {
@@ -34,13 +29,19 @@ class App extends Component {
     this.setState({ authUser });
   };
 
+  removeAuthUser = () => {
+    localStorage.removeItem('user');
+    this.setState({authUser: null});
+  };
+
   render() {
+
     const { location } = this.props;
     return (
       <div>
         {location.pathname !== "/login" &&
           location.pathname !== "/register" && (
-            <NavBar authUser={this.state.authUser} />
+            <NavBar authUser={this.state.authUser} removeAuthUser={this.removeAuthUser}/>
           )}
         <Route exact path="/" component={Welcome} />
         <Route path="/login" component={Login} />

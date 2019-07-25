@@ -18,6 +18,8 @@ This application will allow users to keep a journal wherein snippets of frequent
 | User can write and save journal entries | The 3 most recent entries are listed as links in the lower left section of the screen as links |
 | User can delete snippets | Snippets are removed from the upper left section but any snippets included in journal entries remain|
 | User can delete journal entries | Entries are removed from the database | 
+| User can register | User can register with username, email address and password, login and register options are removed from NavBar |
+| User cannot register with an email address already registered | User receives an error message if this is attempted |
 
 
 
