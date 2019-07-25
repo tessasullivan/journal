@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import NavBar from "../NavBar/NavBar";
@@ -29,24 +29,41 @@ class App extends Component {
   };
 
   removeAuthUser = () => {
-    localStorage.removeItem('user');
-    this.setState({authUser: null});
+    localStorage.removeItem("user");
+    this.setState({ authUser: null });
   };
 
   render() {
-
     const { location } = this.props;
     return (
       <div>
         {location.pathname !== "/login" &&
           location.pathname !== "/register" && (
-            <NavBar authUser={this.state.authUser} removeAuthUser={this.removeAuthUser}/>
+            <NavBar
+              authUser={this.state.authUser}
+              removeAuthUser={this.removeAuthUser}
+            />
           )}
         <Route exact path="/" component={Welcome} />
-        <Route path="/login" component={Login} />
+        <Route
+          path="/login"
+          render={props => (
+            <Login
+              {...props}
+              loginUser={this.props.authService.loginUser}
+              setAuthUser={this.setAuthUser}
+            />
+          )}
+        />
         <Route
           path="/register"
-          render={props => <Register {...props} registerUser={this.props.authService.registerUser} setAuthUser={this.setAuthUser} />}
+          render={props => (
+            <Register
+              {...props}
+              registerUser={this.props.authService.registerUser}
+              setAuthUser={this.setAuthUser}
+            />
+          )}
         />
         <Route path="/article/:slug" component={SingleArticle} />
         <Route path="/articles/create" component={CreateArticle} />
@@ -59,9 +76,9 @@ class App extends Component {
 
 App.propTypes = {
   location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
+    pathname: PropTypes.string.isRequired
   }).isRequired,
   authService: PropTypes.objectOf(PropTypes.func).isRequired
-}; 
+};
 
 export default App;

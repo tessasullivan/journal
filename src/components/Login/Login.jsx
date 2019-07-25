@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "./LoginForm/LoginForm";
+import {PropTypes } from 'prop-types';
 
 class Login extends Component {
   constructor() {
@@ -7,7 +8,8 @@ class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      errors: {}
     };
   }
 
@@ -17,9 +19,21 @@ class Login extends Component {
     });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async event => {
     event.preventDefault();
-    console.log(this.state);
+
+    try {
+      const user = await this.props.loginUser(this.state);
+
+      localStorage.setItem("user", JSON.stringify(user));
+      this.props.setAuthUser(user);
+      this.props.history.push("/");
+
+    } catch (errors) {
+      this.setState({errors})
+    }
+
+
   };
 
   render() {
@@ -30,5 +44,13 @@ class Login extends Component {
       />
     );
   }
+}
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  setAuthUser: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired
 }
 export default Login;
