@@ -39,6 +39,7 @@ class Login extends Component {
       <LoginForm
         handleInputChange={this.handleInputChange}
         handleSubmit={this.handleSubmit}
+        errors={this.state.errors}
       />
     );
   }
