@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import RegisterForm from "./RegisterForm/RegisterForm";
+import {PropTypes } from 'prop-types';
+
 
 class Register extends Component {
   constructor() {
@@ -45,5 +47,13 @@ class Register extends Component {
       />
     );
   }
+}
+
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  setAuthUser: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired
 }
 export default Register;

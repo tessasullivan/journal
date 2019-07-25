@@ -28,6 +28,6 @@ Banner.propTypes = {
 };
 
 Banner.defaultProps = {
-  subTitle: null,
+  subtitle: null,
 };
 export default Banner;

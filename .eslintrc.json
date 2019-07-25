@@ -4,9 +4,11 @@
         "es6": true
     },
     "extends": "plugin:react/recommended",
+    "parser": "babel-eslint",
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "localStorage": true
     },
     "parserOptions": {
         "ecmaFeatures": {
