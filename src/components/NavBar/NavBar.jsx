@@ -29,7 +29,7 @@ const NavBar = ({ authUser, removeAuthUser }) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/articles/create">
+              <Link className="nav-link" to="/entries/create">
                 Write new article
               </Link>
             </li>

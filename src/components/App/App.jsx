@@ -17,7 +17,8 @@ class App extends Component {
       authUser: null
     };
   }
-  componentDidMount() {
+  // Have to use componentWillMount in order for the token to not be null
+  UNSAFE_componentWillMount() {
     const user = localStorage.getItem("user");
     if (user) {
       this.setState({ authUser: JSON.parse(user) });
@@ -78,6 +79,7 @@ class App extends Component {
                 this.props.entriesService.getJournalCategories
               }
               createJournalEntry={this.props.entriesService.createJournalEntry}
+              token={this.state.authUser.token}
             />
           )}
         />

@@ -21,7 +21,6 @@ class CreateJournalEntry extends Component {
   }
 
   handleInputChange = event => {
-    console.log(event.target.files);
     this.setState({
       [event.target.name]:
         event.target.type === "file"
@@ -32,7 +31,12 @@ class CreateJournalEntry extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    await this.props.createJournalEntry(this.state);
+    try {
+      const entry = await this.props.createJournalEntry(this.state, this.props.token);
+      this.props.history.push('/');
+    } catch(errors) {
+      this.setState({errors});
+    }
   }
 
   render() {
@@ -47,6 +51,10 @@ class CreateJournalEntry extends Component {
 }
 CreateJournalEntry.propTypes = {
   getJournalCategories: PropTypes.func.isRequired,
-  createJournalEntry: PropTypes.func.isRequired
+  createJournalEntry: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired,
 };
 export default CreateJournalEntry;
