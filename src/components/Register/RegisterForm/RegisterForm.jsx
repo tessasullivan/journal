@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {PropTypes } from 'prop-types';
 
 const RegisterForm = ({ handleInputChange, handleSubmit, errors }) => {
   return ( 
@@ -87,5 +88,11 @@ const RegisterForm = ({ handleInputChange, handleSubmit, errors }) => {
   </div>
    );
 }
- 
+
+RegisterForm.propTypes = {
+  handleInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.objectOf(PropTypes.string).isRequired,
+}
+
 export default RegisterForm;

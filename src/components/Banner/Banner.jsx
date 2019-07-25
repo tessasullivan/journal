@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Banner = ({backgroundImage, title, subtitle}) => {
   return (
@@ -20,5 +21,13 @@ const Banner = ({backgroundImage, title, subtitle}) => {
     </header>
   );
 };
+Banner.propTypes = {
+  backgroundImage: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  title: PropTypes.string.isRequired,
+};
 
+Banner.defaultProps = {
+  subTitle: null,
+};
 export default Banner;

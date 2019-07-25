@@ -15,10 +15,10 @@ const SingleArticle = () => {
               <p className="opacity-70">News</p>
               <br />
               <h1 className="display-4 hidden-sm-down">
-                We've just passed 1,000 customers!
+                We&apos;ve just passed 1,000 customers!
               </h1>
               <h1 className="hidden-md-up">
-                We've just passed 1,000 customers!
+                We&apos;ve just passed 1,000 customers!
               </h1>
               <br />
               <br />
@@ -85,8 +85,8 @@ const SingleArticle = () => {
                   Compellingly plagiarize economically sound opportunities and
                   cross-platform e-business. Completely embrace alternative
                   initiatives whereas innovative services. Holisticly e-enable
-                  one-to-one internal or "organic" sources via interactive
-                  technologies. Energistically leverage other's end-to-end
+                  one-to-one internal or &quot;organic&quot; sources via interactive
+                  technologies. Energistically leverage other&apos;s end-to-end
                   e-tailers with goal-oriented innovation. Objectively evolve
                   focused networks for unique methods.
                 </p>
@@ -133,7 +133,7 @@ const SingleArticle = () => {
                   relationships via performance based synergy. Monotonectally
                   mesh interoperable processes through high-quality e-commerce.
                   Dynamically build team building models without 24/7 internal
-                  or "organic" sources. Compellingly incentivize e-business
+                  or &quot;organic&quot; sources. Compellingly incentivize e-business
                   methods of empowerment with.
                 </p>
                 <blockquote className="blockquote">
@@ -155,7 +155,7 @@ const SingleArticle = () => {
                   intellectual capital after B2B total linkage. Progressively
                   innovate technically sound manufactured products whereas
                   diverse meta-services. Continually orchestrate ubiquitous core
-                  competencies rather than market positioning "outside the box"
+                  competencies rather than market positioning &quot;outside the box&quot;
                   thinking. Dramatically redefine out-of-the-box schemas.
                 </p>
                 <div className="gap-multiline-items-1 mt-30">

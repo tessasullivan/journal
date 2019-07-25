@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const NavBar = ({ authUser, removeAuthUser }) => {
   return (
@@ -71,5 +72,16 @@ const NavBar = ({ authUser, removeAuthUser }) => {
     </nav>
   );
 };
+NavBar.propTypes = {
+  authUser: PropTypes.shape({
+    user: PropTypes.shape({
+      name: PropTypes.string,
+    }).isRequired,
+  }),
+  removeAuthUser: PropTypes.func.isRequired
+};
 
+NavBar.defaultProps = {
+  authUser: null,
+};
 export default NavBar;
