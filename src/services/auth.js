@@ -1,6 +1,6 @@
 import { validateAll } from "indicative";
-import Axios from 'axios';
-import config from '../config';
+import Axios from "axios";
+import config from "../config";
 
 export default class AuthService {
   async registerUser(data) {
@@ -13,33 +13,35 @@ export default class AuthService {
     };
 
     const messages = {
-      required: 'The {{ field }} is required.',
-      'password.confirmed': 'The password confirmation does not match.',
-      'email.email': 'The email address is invalid.'
+      required: "The {{ field }} is required.",
+      "password.confirmed": "The password confirmation does not match.",
+      "email.email": "The email address is invalid."
     };
 
     try {
       await validateAll(data, rules, messages);
-      try {
-        // Attempt to register the user 
-        const response = await Axios.post(`${config.apiUrl}/auth/register`, {
-          name: data.name,
-          email: data.email,
-          password: data.password })
 
-        return response.data.data;
+      // Attempt to register the user
+      const response = await Axios.post(`${config.apiUrl}/auth/register`, {
+        name: data.name,
+        email: data.email,
+        password: data.password
+      });
 
-      // If there are errors with registering the user, catch and display them.
-      } catch (errors) {
-        const formattedErrors = {};
-        if(errors.response) formattedErrors['email'] = errors.response.data['email'][0];
-        return formattedErrors;
-      }
-      // If there are errors with the validation, catch and display them.
+      return response.data.data;
+
     } catch (errors) {
       const formattedErrors = {};
+      
+      // If there are errors with registering the user, catch and display them.
+      if (errors.response.status === 422) {
+        formattedErrors["email"] = errors.response.data["email"][0];
+        return Promise.reject(formattedErrors);
+      }
+
+      // If there are errors with the validation, catch and display them.
       errors.forEach(error => (formattedErrors[error.field] = error.message));
-      return formattedErrors;
+      return Promise.reject(formattedErrors);
     }
   }
 }
