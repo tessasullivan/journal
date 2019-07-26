@@ -48,7 +48,16 @@ class App extends Component {
               removeAuthUser={this.removeAuthUser}
             />
           )}
-        <Route exact path="/" component={Welcome} />
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <Welcome
+              {...props}
+              getJournalEntries={this.props.entriesService.getJournalEntries}
+            />
+          )}
+        />
         <Route
           path="/login"
           render={props => (
