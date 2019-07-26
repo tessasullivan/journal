@@ -2,7 +2,12 @@ import React from "react";
 import Banner from "../../Banner/Banner";
 import { PropTypes } from "prop-types";
 
-const CreateJournalEntryForm = ({ handleInputChange, handleSubmit, categories }) => {
+const CreateJournalEntryForm = ({
+  handleInputChange,
+  handleSubmit,
+  categories,
+  errors
+}) => {
   return (
     <div>
       <Banner
@@ -17,10 +22,14 @@ const CreateJournalEntryForm = ({ handleInputChange, handleSubmit, categories })
           <div className="container">
             <div className="row">
               <div className="col-12 col-lg-12">
-                <form
-                  className="p-30 bg-gray rounded"
-                  onSubmit={handleSubmit}
-                >
+                <ul className="list-group">
+                  {errors.map(error => 
+                    <li key={error.message} className="list-group-item text-danger">
+                      {error.message}
+                    </li>
+                  )}
+                </ul>
+                <form className="p-30 bg-gray rounded" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="form-group col-md-12 my-5">
                       <input
@@ -81,7 +90,9 @@ const CreateJournalEntryForm = ({ handleInputChange, handleSubmit, categories })
 CreateJournalEntryForm.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  categories: PropTypes.array
-  // errors: PropTypes.objectOf(PropTypes.string).isRequired
+  categories: PropTypes.array,
+  errors: PropTypes.arrayOf(PropTypes.shape({
+    message: PropTypes.string.isRequired,
+  })).isRequired,
 };
 export default CreateJournalEntryForm;

@@ -10,7 +10,7 @@ class CreateJournalEntry extends Component {
       image: null,
       content: "",
       category: null,
-      errors: {},
+      errors: [],
       categories: []
     };
   }
@@ -32,7 +32,8 @@ class CreateJournalEntry extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     try {
-      const entry = await this.props.createJournalEntry(this.state, this.props.token);
+      // const entry = 
+      await this.props.createJournalEntry(this.state, this.props.token);
       this.props.history.push('/');
     } catch(errors) {
       this.setState({errors});
@@ -45,6 +46,7 @@ class CreateJournalEntry extends Component {
         handleInputChange={this.handleInputChange}
         categories={this.state.categories}
         handleSubmit={this.handleSubmit}
+        errors={this.state.errors}
       />
     );
   }
