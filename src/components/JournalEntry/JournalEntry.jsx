@@ -6,7 +6,7 @@ const JournalEntry = ({entry}) => {
     <article className="mt-90">
       <header className="text-center mb-40">
         <h3>
-          <a href="blog-single.html">{entry.title}</a>
+          <Link to={`article/${entry.slug}`}>{entry.title}</Link>
         </h3>
         <div className="link-color-default fs-12">
           {/* eslint-disable-next-line */} 
@@ -18,13 +18,10 @@ const JournalEntry = ({entry}) => {
       </a>
       <div className="card-block">
         <p className="text-justify">
-          Lorem ipsum dolor sit amet, quas eruditi facilisi ut eam, et omnes
-          dolores vix. Et numquam omnesque pro, nec tota fugit discere ei. Vel
-          persius deseruisse definiebas ex, mel eu solet cetero malorum. Sed et
-          labore tritani inciderint. Sea at mutat quando, dicant nullam et vim.
+          {`${entry.content.substring(0,90)}...`}
         </p>
         <p className="text-center mt-40">
-          <Link className="btn btn-primary btn-round" to="entry/some-title-slug">
+          <Link className="btn btn-primary btn-round" to={`article/${entry.slug}`}>
             Read more
           </Link>
         </p>

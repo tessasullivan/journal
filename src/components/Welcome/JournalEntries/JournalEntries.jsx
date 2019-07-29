@@ -1,8 +1,10 @@
 import React from "react";
+// import { Link } from "react-router-dom";
+
 import JournalEntry from "../../JournalEntry/JournalEntry";
 import Banner from "../../Banner/Banner";
 
-const JournalEntries = ({entries}) => {
+const JournalEntries = ({entries, handlePagination, nextUrl, prevUrl}) => {
   return (
     <div>
       <Banner
@@ -21,12 +23,13 @@ const JournalEntries = ({entries}) => {
             ))}
             <nav className="flexbox mb-50 mt-50">
               {/* eslint-disable-next-line */}
-              <a className="btn btn-white disabled">
-                <i className="ti-arrow-left fs-9 mr-4" /> Newer
+              <a className={`btn btn-white ${prevUrl ? '' : 'disabled'}`} href="#" onClick={() => handlePagination(prevUrl)}>
+                <i className="ti-arrow-left fs-9 mr-4" /> 
+                Older
               </a>
               {/* eslint-disable-next-line */}
-              <a className="btn btn-white" href="#">
-                Older
+              <a className={`btn btn-white ${nextUrl ? '' : 'disabled'}`} href="#" onClick={() => handlePagination(nextUrl)}>
+                Newer 
                 <i className="ti-arrow-right fs-9 ml-4" />
               </a>
             </nav>
