@@ -16,7 +16,8 @@ class Welcome extends Component {
   }
   render() { 
     return ( 
-      <JournalEntries /> 
+      <JournalEntries 
+      entries={this.state.entries.data}/> 
      );
   }
 }

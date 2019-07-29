@@ -7,7 +7,7 @@ export default class EntriesService {
   async getJournalEntries() {
     const response = await Axios.get(`${config.apiUrl}/articles`);
 
-    return response.data;
+    return response.data.data;
   }
 
   async getJournalCategories() {

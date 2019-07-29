@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const JournalEntry = () => {
+const JournalEntry = ({entry}) => {
   return (
     <article className="mt-90">
       <header className="text-center mb-40">
         <h3>
-          <a href="blog-single.html">New features will add to dashboard soon</a>
+          <a href="blog-single.html">{entry.title}</a>
         </h3>
         <div className="link-color-default fs-12">
-          {/* eslint-disable-next-line */}
-          <a href="#">News</a>, <time>July 23, 2019</time>
+          {/* eslint-disable-next-line */} 
+          <a href="#">{entry.category.name}</a>, <time>{(new Date(entry.created_at)).toDateString()}</time>
         </div>
       </header>
       <a href="blog-single.html">
-        <img className="rounded" src="assets/img/blog-1.jpg" alt="..." />
+        <img className="rounded" src={entry.imageUrl} alt="..." />
       </a>
       <div className="card-block">
         <p className="text-justify">
