@@ -1,26 +1,16 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true
-    },
-    "extends": "plugin:react/recommended",
+    "extends": "airbnb",
     "parser": "babel-eslint",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly",
-        "localStorage": true
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
     "rules": {
-        "react/jsx-uses-react": 0
+        "jsx-a11y/anchor-is-valid": 0,
+        "jsx-a11y/label-has-for": 0,
+        "class-methods-use-this": 0,
+        "react/jsx-filename-extension": 0,
+        "prefer-promise-reject-errors": 0
+    },
+    "globals": {
+        "localStorage": true,
+        "document": true,
+        "FormData": true
     }
 }
