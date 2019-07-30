@@ -78,7 +78,15 @@ class App extends Component {
             />
           )}
         />
-        <Route path="/entry/:slug" component={SingleJournalEntry} />
+        <Route
+          path="/entry/:slug"
+          render={props => (
+            <SingleJournalEntry
+              {...props}
+              getJournalEntry={this.props.entriesService.getJournalEntry}
+            />
+          )}
+        /> 
         <Route
           path="/entries/create"
           render={props => (

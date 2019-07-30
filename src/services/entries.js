@@ -8,13 +8,18 @@ export default class EntriesService {
     const response = await Axios.get(url);
 
     return response.data.data;
-  }
+  };
+
+  async getJournalEntry(slug) {
+    const response = await Axios.get(`${config.apiUrl}/article/${slug}`);
+    return response.data.data;
+  };
 
   async getJournalCategories() {
     const response = await Axios.get(`${config.apiUrl}/categories`);
 
     return response.data.categories;
-  }
+  };
 
   createJournalEntry = async (data, token) => {
 
